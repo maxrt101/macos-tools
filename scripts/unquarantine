@@ -1,0 +1,10 @@
+#!/bin/bash
+
+FOLDER='.'
+PATTERN='*'
+
+[[ "$1" != "" ]] && FOLDER=$1
+[[ "$2" != "" ]] && PATTERN=$2
+
+find "$FOLDER" -iname "$PATTERN" -print0 | xargs -0 xattr -d com.apple.quarantine
+
